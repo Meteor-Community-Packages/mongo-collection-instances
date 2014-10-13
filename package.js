@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Access your Mongo instances",
-  version: "0.1.0",
+  version: "0.1.1",
   git: "https://github.com/dburles/mongo-instances.git"
 });
 
@@ -12,6 +12,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('mongo-instances');
+  api.use('dburles:mongo-instances');
   api.addFiles('mongo-instances-tests.js');
 });
