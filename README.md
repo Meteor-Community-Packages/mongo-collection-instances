@@ -6,7 +6,7 @@ Maybe sketchy. Adding this package allows you to lookup a Mongo Collection insta
 # Usage Example
 
 ```js
-Books = new Meteor.Collection('books');
+Books = new Mongo.Collection('books');
 
 Mongo.Collection.get('books').insert({ name: 'test' });
 
