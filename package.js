@@ -12,6 +12,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('dburles:mongo-instances');
+  api.use('dburles:mongo-collection-instances');
   api.addFiles('mongo-instances-tests.js');
 });
