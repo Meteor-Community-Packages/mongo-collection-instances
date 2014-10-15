@@ -25,3 +25,7 @@ Foo2 = new Mongo.Collection('foo', { connection: connection2 });
 
 Mongo.Collection.get('foo') // returns instance of Foo2
 ```
+
+### License
+
+MIT
