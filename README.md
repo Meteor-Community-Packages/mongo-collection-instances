@@ -23,5 +23,5 @@ e.g:
 Foo1 = new Mongo.Collection('foo', { connection: connection1 });
 Foo2 = new Mongo.Collection('foo', { connection: connection2 });
 
-Mongo.Collection.get('foo') // returns instance of Foo1
+Mongo.Collection.get('foo') // returns instance of Foo2
 ```
