@@ -1,4 +1,4 @@
-var instances = {};
+var instances = { users: Meteor.users };
 var orig = Mongo.Collection;
 
 var spawner = function(name, options) {
