@@ -1,5 +1,5 @@
 Package.describe({
-  name: "gwendall:mongo-collection-instances",
+  name: "dburles:mongo-collection-instances",
   summary: "Access your Mongo instances",
   version: "0.2.0",
   git: "https://github.com/dburles/mongo-collection-instances.git"
