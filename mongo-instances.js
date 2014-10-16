@@ -1,4 +1,4 @@
-var instances = {};
+var instances = [];
 var orig = Mongo.Collection;
 
 var spawner = function(name, options) {
@@ -7,9 +7,14 @@ var spawner = function(name, options) {
 
 var spawn = function(name, options) {
   Mongo.Collection = orig;
-  instances[name] = new Mongo.Collection(name, options);
+  var instance = new Mongo.Collection(name, options);
+  instances.push({
+    name: name,
+    instance: instance,
+    options: options
+  });
   Mongo.Collection = spawner;
-  return instances[name];
+  return instance;
 };
 
 Mongo.Collection = spawner;
@@ -18,6 +23,21 @@ for (var property in orig) {
     Mongo.Collection[property] = orig[property];
 }
 
-Mongo.Collection.get = function(name) {
-  return instances[name];
+Mongo.Collection.get = function(name, options) {
+  options = options || {};
+  var collection = _.find(instances, function(instance) {
+    if (options.connection)
+      return instance.name === name &&
+        instance.options && instance.options.connection._lastSessionId === options.connection._lastSessionId;
+    return instance.name === name;
+  });
+
+  if (! collection)
+    throw new Meteor.Error("Collection not found");
+
+  return collection.instance;
+};
+
+Mongo.Collection.getAll = function() {
+  return instances;
 };
