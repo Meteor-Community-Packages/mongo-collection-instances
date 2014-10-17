@@ -41,3 +41,11 @@ Mongo.Collection.get = function(name, options) {
 Mongo.Collection.getAll = function() {
   return instances;
 };
+
+if (Meteor.users) {
+  instances.push({
+    name: 'users',
+    instance: Meteor.users,
+    options: undefined
+  });
+}
