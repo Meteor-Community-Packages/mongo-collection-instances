@@ -18,6 +18,8 @@ var spawn = function(name, options) {
 };
 
 Mongo.Collection = spawner;
+Meteor.Collection = spawner;
+
 for (var property in orig) {
   if (orig.hasOwnProperty(property))
     Mongo.Collection[property] = orig[property];
