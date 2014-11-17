@@ -1,31 +1,28 @@
 var instances = [];
-var orig = Mongo.Collection;
+// the original collection
+var MongoCollection = Mongo.Collection;
 
-var spawner = function(name, options) {
-  return spawn(name, options);
-};
-
-var spawn = function(name, options) {
-  Mongo.Collection = orig;
-  var instance = new Mongo.Collection(name, options);
+var InfectedMongoCollection = function(name, options) {
+  var instance = new MongoCollection(name, options);
   instances.push({
     name: name,
     instance: instance,
     options: options
   });
-  Mongo.Collection = spawner;
   return instance;
 };
 
-Mongo.Collection = spawner;
-Meteor.Collection = spawner;
+Mongo.Collection = InfectedMongoCollection;
+Meteor.Collection = InfectedMongoCollection;
 
-for (var property in orig) {
-  if (orig.hasOwnProperty(property))
-    Mongo.Collection[property] = orig[property];
+// make InfectedMongoCollection look more like MongoCollection
+for (var property in MongoCollection) {
+  if (MongoCollection.hasOwnProperty(property))
+    InfectedMongoCollection[property] = MongoCollection[property];
 }
+InfectedMongoCollection.prototype = MongoCollection.prototype;
 
-Mongo.Collection.get = function(name, options) {
+InfectedMongoCollection.get = function(name, options) {
   options = options || {};
   var collection = _.find(instances, function(instance) {
     if (options.connection)
@@ -40,10 +37,11 @@ Mongo.Collection.get = function(name, options) {
   return collection.instance;
 };
 
-Mongo.Collection.getAll = function() {
+InfectedMongoCollection.getAll = function() {
   return instances;
-};
+}
 
+// special-case handle users collection, which might have been created earlier.
 if (Meteor.users) {
   instances.push({
     name: 'users',
