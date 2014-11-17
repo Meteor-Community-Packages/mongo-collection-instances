@@ -15,7 +15,7 @@ Mongo.Collection.get('books').findOne({ name: 'test' });
 
 # API
 
-#### Mongo.Collection.get('name', [options])
+#### CollectionWatcher.get('name', [options])
 
 Returns the collection instance.
 
@@ -23,7 +23,7 @@ Returns the collection instance.
  - options (Object) [optional]
    - options.connection (A connection object)
 
-#### Mongo.Collection.getAll()
+#### CollectionWatcher.getAll()
 
 Returns an array of objects containing:
  - name (The name of the collection)

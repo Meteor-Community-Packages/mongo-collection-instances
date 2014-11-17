@@ -1,3 +1,5 @@
+var root = this.exports || this;
+
 var instances = [];
 // the original collection
 var MongoCollection = Mongo.Collection;
@@ -22,23 +24,25 @@ for (var property in MongoCollection) {
 }
 InfectedMongoCollection.prototype = MongoCollection.prototype;
 
-InfectedMongoCollection.get = function(name, options) {
-  options = options || {};
-  var collection = _.find(instances, function(instance) {
-    if (options.connection)
-      return instance.name === name &&
-        instance.options && instance.options.connection._lastSessionId === options.connection._lastSessionId;
-    return instance.name === name;
-  });
+CollectionWatcher = {
+  get: function(name, options) {
+    options = options || {};
+    var collection = _.find(instances, function(instance) {
+      if (options.connection)
+        return instance.name === name &&
+          instance.options && instance.options.connection._lastSessionId === options.connection._lastSessionId;
+      return instance.name === name;
+    });
 
-  if (! collection)
-    throw new Meteor.Error("Collection not found");
+    if (! collection)
+      throw new Meteor.Error("Collection not found");
 
-  return collection.instance;
-};
+    return collection.instance;
+  },
 
-InfectedMongoCollection.getAll = function() {
-  return instances;
+  getAll: function() {
+    return instances;
+  }
 }
 
 // special-case handle users collection, which might have been created earlier.
@@ -49,3 +53,5 @@ if (Meteor.users) {
     options: undefined
   });
 }
+
+root.CollectionWatcher = CollectionWatcher;
