@@ -1,7 +1,7 @@
 mongo-collection-instances
 ===============
 
-Maybe sketchy. Adding this package allows you to lookup a Mongo Collection instance by the collection name.
+Maybe sketchy. This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to lookup later a Mongo Collection instance by the collection name.
 
 # Usage Example
 
