@@ -1,12 +1,8 @@
 var instances = [];
 var orig = Mongo.Collection;
 
-var spawner = function(name, options) {
-  return spawn(name, options);
-};
-
-var spawn = function(name, options) {
-  Mongo.Collection = orig;
+Mongo.Collection = Meteor.Collection = function spawner(name, options) {
+  Mongo.Collection = orig;  // `new` below doesn't work directly with orig
   var instance = new Mongo.Collection(name, options);
   instances.push({
     name: name,
@@ -16,9 +12,6 @@ var spawn = function(name, options) {
   Mongo.Collection = spawner;
   return instance;
 };
-
-Mongo.Collection = spawner;
-Meteor.Collection = spawner;
 
 for (var property in orig) {
   if (orig.hasOwnProperty(property))
