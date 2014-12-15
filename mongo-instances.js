@@ -3,13 +3,25 @@ var orig = Mongo.Collection;
 
 Mongo.Collection = Meteor.Collection = function spawner(name, options) {
   Mongo.Collection = orig;  // `new` below doesn't work directly with orig
-  var instance = new Mongo.Collection(name, options);
+  
+  var instance, error;
+  try {
+    instance = new Mongo.Collection(name, options);
+  } catch (err) {
+    error = err;
+  }
+
+  Mongo.Collection = spawner;
+
+  if (error)
+    throw new Meteor.Error(error);
+
   instances.push({
     name: name,
     instance: instance,
     options: options
   });
-  Mongo.Collection = spawner;
+  
   return instance;
 };
 
