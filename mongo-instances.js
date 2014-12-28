@@ -4,23 +4,11 @@ var orig = Mongo.Collection;
 Mongo.Collection = function (name, options) {
   orig.call( this, name, options );  //inherit orig
   
-  var instance, error;
-  try {
-    instance = new Mongo.Collection(name, options);
-  } catch (err) {
-    error = err;
-  }
-
-  if (error)
-    throw new Meteor.Error(error);
-
   instances.push({
     name: name,
-    instance: instance,
+    instance: this,
     options: options
   });
-  
-  return instance;
 };
 
 Mongo.Collection.prototype ( Object.create( orig.prototype ) );
