@@ -53,7 +53,6 @@ Mongo.Collection.getAll = function() {
 
 //This is bug fix as Meteor.Collection will lack ownProperties that are added back to Mongo.Collection
 Meteor.Collection = Mongo.Collection;
-_.extend( Meteor.Collection, Mongo.Collection );
 
 if (Meteor.users) {
   instances.push({
