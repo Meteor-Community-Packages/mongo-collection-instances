@@ -11,7 +11,7 @@ Mongo.Collection = function (name, options) {
   });
 };
 
-Mongo.Collection.prototype ( Object.create( orig.prototype ) );
+Mongo.Collection.prototype = Object.create( orig.prototype );
 Mongo.Collection.prototype.constructor = Mongo.Collection;
 
 _.extend( Mongo.Collection, orig ); // clearer
