@@ -2,7 +2,7 @@ var instances = [];
 var orig = Mongo.Collection;
 
 Mongo.Collection = function (name, options) {
-  orig.call( this );  //inherit orig
+  orig.call( this, name, options );  //inherit orig
   
   var instance, error;
   try {
