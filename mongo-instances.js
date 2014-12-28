@@ -1,34 +1,20 @@
 var instances = [];
 var orig = Mongo.Collection;
 
-Mongo.Collection = Meteor.Collection = function spawner(name, options) {
-  Mongo.Collection = orig;  // `new` below doesn't work directly with orig
+Mongo.Collection = function(name, options) {
+  orig.call(this, name, options);  // inherit orig
   
-  var instance, error;
-  try {
-    instance = new Mongo.Collection(name, options);
-  } catch (err) {
-    error = err;
-  }
-
-  Mongo.Collection = spawner;
-
-  if (error)
-    throw new Meteor.Error(error);
-
   instances.push({
     name: name,
-    instance: instance,
+    instance: this,
     options: options
   });
-  
-  return instance;
 };
 
-for (var property in orig) {
-  if (orig.hasOwnProperty(property))
-    Mongo.Collection[property] = orig[property];
-}
+Mongo.Collection.prototype = Object.create(orig.prototype);
+Mongo.Collection.prototype.constructor = Mongo.Collection;
+
+_.extend(Mongo.Collection, orig);
 
 Mongo.Collection.get = function(name, options) {
   options = options || {};
@@ -48,6 +34,9 @@ Mongo.Collection.get = function(name, options) {
 Mongo.Collection.getAll = function() {
   return instances;
 };
+
+// Meteor.Collection will lack ownProperties that are added back to Mongo.Collection
+Meteor.Collection = Mongo.Collection;
 
 if (Meteor.users) {
   instances.push({
