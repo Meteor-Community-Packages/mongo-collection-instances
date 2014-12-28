@@ -7,7 +7,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
-  api.use('mongo');
+  api.use(['mongo', 'underscore']);
   api.addFiles('mongo-instances.js');
 });
 
