@@ -3,7 +3,7 @@ Mongo Collection Instances
 
 Maybe sketchy. This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to lookup later a Mongo Collection instance by the collection name.
 
-# Usage Example
+## Usage Example
 
 ```js
 Books = new Mongo.Collection('books');
@@ -13,7 +13,7 @@ Mongo.Collection.get('books').insert({ name: 'test' });
 Mongo.Collection.get('books').findOne({ name: 'test' });
 ```
 
-# API
+## API
 
 #### Mongo.Collection.get('name', [options])
 
