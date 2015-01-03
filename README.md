@@ -1,4 +1,4 @@
-mongo-collection-instances
+Mongo Collection Instances
 ===============
 
 Maybe sketchy. This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to lookup later a Mongo Collection instance by the collection name.
