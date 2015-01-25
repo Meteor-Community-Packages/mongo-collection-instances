@@ -1,7 +1,13 @@
 Mongo Collection Instances
 ===============
 
-Maybe sketchy. This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to lookup later a Mongo Collection instance by the collection name.
+Maybe sketchy. This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to later lookup a Mongo Collection instance by the collection name.
+
+## Installation
+
+```sh
+$ meteor add dburles:mongo-collection-instances
+```
 
 ## Usage Example
 
