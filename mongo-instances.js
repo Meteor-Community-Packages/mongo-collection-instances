@@ -31,6 +31,21 @@ Mongo.Collection.get = function(name, options) {
   return collection.instance;
 };
 
+Mongo.Collection.getOrCreate = function(name, options) {
+  options = options || {};
+  var collection = _.find(instances, function(instance) {
+    if (options.connection)
+    return instance.name === name &&
+    instance.options && instance.options.connection._lastSessionId === options.connection._lastSessionId;
+    return instance.name === name;
+  });
+  
+  if (! collection)
+    collection = new Meteor.Collection(name);
+  
+  return collection.instance;
+};
+
 Mongo.Collection.getAll = function() {
   return instances;
 };
