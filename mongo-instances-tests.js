@@ -35,6 +35,22 @@ Tinytest.add('nonexistent - throws', function (test) {
   test.throws(getNonexistent, 'not found');
 });
 
+Tinytest.add('nonexistent - doesn\'t throws, returns null', function (test) {
+  function getNonexistent() {
+    return Mongo.Collection.get('truly-non-existent',{}, true);
+  }
+
+  test.equal( getNonexistent() , null);
+});
+
+Tinytest.add('nonexistent - doesn\'t throws, returns null 2', function (test) {
+  function getNonexistent() {
+    return Mongo.Collection.get(null,{}, true);
+  }
+
+  test.equal( getNonexistent() , null);
+});
+
 Tinytest.add('instanceof - matches Mongo.Collection', function (test) {
   var collectionName = 'foo' + test.id;
   var Test = new Mongo.Collection(collectionName);

@@ -21,13 +21,14 @@ Mongo.Collection.get('books').findOne({ name: 'test' });
 
 ## API
 
-#### Mongo.Collection.get('name', [options])
+#### Mongo.Collection.get('name', [options], faillWithNull)
 
 Returns the collection instance.
 
  - name (String)
  - options (Object) [optional]
    - options.connection (A connection object)
+ - returns null if the collection doesn't exists, false by default
 
 #### Mongo.Collection.getAll()
 
