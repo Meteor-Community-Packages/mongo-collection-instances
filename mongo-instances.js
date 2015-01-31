@@ -3,7 +3,7 @@ var orig = Mongo.Collection;
 
 Mongo.Collection = function(name, options) {
   orig.call(this, name, options);  // inherit orig
-  
+
   instances.push({
     name: name,
     instance: this,
@@ -16,8 +16,10 @@ Mongo.Collection.prototype.constructor = Mongo.Collection;
 
 _.extend(Mongo.Collection, orig);
 
-Mongo.Collection.get = function(name, options) {
+Mongo.Collection.get = function(name, options, failWithNull) {
   options = options || {};
+  failWithNull = failWithNull || false;
+
   var collection = _.find(instances, function(instance) {
     if (options.connection)
       return instance.name === name &&
@@ -25,9 +27,14 @@ Mongo.Collection.get = function(name, options) {
     return instance.name === name;
   });
 
-  if (! collection)
-    throw new Meteor.Error("Collection not found");
+  if ( !collection ){
+    if( failWithNull ){
+        return null;
+    }
 
+    throw new Meteor.Error("Collection not found");
+  }
+    
   return collection.instance;
 };
 
