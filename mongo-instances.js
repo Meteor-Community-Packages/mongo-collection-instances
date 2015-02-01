@@ -25,10 +25,7 @@ Mongo.Collection.get = function(name, options) {
     return instance.name === name;
   });
 
-  if (! collection)
-    throw new Meteor.Error("Collection not found");
-
-  return collection.instance;
+  return collection && collection.instance;
 };
 
 Mongo.Collection.getAll = function() {

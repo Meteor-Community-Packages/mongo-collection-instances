@@ -28,11 +28,9 @@ Tinytest.add('basic - collection already exists', function (test) {
   test.throws(reInstantiate, 'is already');
 });
 
-Tinytest.add('nonexistent - throws', function (test) {
-  function getNonexistent() {
-    return Mongo.Collection.get('truly-non-existent');
-  }
-  test.throws(getNonexistent, 'not found');
+Tinytest.add('nonexistent - returns undefined', function (test) {
+  var collection = Mongo.Collection.get('truly-non-existent');
+  test.equal(collection, undefined);
 });
 
 Tinytest.add('instanceof - matches Mongo.Collection', function (test) {
