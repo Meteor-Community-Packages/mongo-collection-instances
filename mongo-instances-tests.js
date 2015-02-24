@@ -39,6 +39,12 @@ Tinytest.add('instanceof - matches Mongo.Collection', function (test) {
   test.instanceOf(Test, Mongo.Collection);
 });
 
+Tinytest.add('instanceof - Meteor.Collection matches Mongo.Collection', function (test) {
+  var collectionName = 'foo' + test.id;
+  var Test = new Meteor.Collection(collectionName);
+  test.instanceOf(Test, Mongo.Collection);
+});
+
 Tinytest.add('use New - keep behavior of Mongo.Collection', function (test) {
   var collectionName = 'foo' + test.id;
   function createWithoutNew() {
