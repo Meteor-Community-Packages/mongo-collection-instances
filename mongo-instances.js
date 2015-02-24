@@ -1,4 +1,12 @@
 var instances = [];
+
+Meteor.addCollectionExtension(function (name, options) {
+  instances.push({
+    name: name,
+    instance: this,
+    options: options
+  });
+});
 var orig = Mongo.Collection;
 
 Mongo.Collection = function(name, options) {
