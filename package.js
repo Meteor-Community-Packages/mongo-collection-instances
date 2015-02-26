@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.use([
     'mongo',
     'underscore',
-    'lai:collection-extensions@0.1.1']);
+    'lai:collection-extensions@0.1.3']);
   api.addFiles('mongo-instances.js');
 });
 
