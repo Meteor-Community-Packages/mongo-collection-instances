@@ -57,3 +57,8 @@ Tinytest.add('use New - keep behavior of Mongo.Collection', function (test) {
   }
   test.throws(createWithoutNew, 'use "new" to construct a Mongo.Collection');
 });
+
+Tinytest.add('users - can Mongo.Collection.get Meteor.users instance', function (test) {
+  test.instanceOf(Mongo.Collection.get('users'), Mongo.Collection);
+  test.instanceOf(Mongo.Collection.get('users'), Meteor.Collection);
+});
