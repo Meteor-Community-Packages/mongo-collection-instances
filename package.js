@@ -8,11 +8,13 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
   api.use(['mongo', 'underscore']);
+  api.use('lai:collection-extensions@0.1.1');
   api.addFiles('mongo-instances.js');
 });
 
 Package.onTest(function(api) {
   api.use('tinytest');
+  api.use('accounts-base');
   api.use('dburles:mongo-collection-instances');
   api.addFiles('mongo-instances-tests.js');
 });

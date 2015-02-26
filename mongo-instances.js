@@ -1,20 +1,12 @@
 var instances = [];
-var orig = Mongo.Collection;
 
-Mongo.Collection = function(name, options) {
-  orig.call(this, name, options);  // inherit orig
-  
+Meteor.addCollectionExtension(function (name, options) {
   instances.push({
     name: name,
     instance: this,
     options: options
   });
-};
-
-Mongo.Collection.prototype = Object.create(orig.prototype);
-Mongo.Collection.prototype.constructor = Mongo.Collection;
-
-_.extend(Mongo.Collection, orig);
+});
 
 Mongo.Collection.get = function(name, options) {
   options = options || {};
