@@ -26,11 +26,3 @@ Mongo.Collection.getAll = function() {
 
 // Meteor.Collection will lack ownProperties that are added back to Mongo.Collection
 Meteor.Collection = Mongo.Collection;
-
-if (Meteor.users) {
-  instances.push({
-    name: 'users',
-    instance: Meteor.users,
-    options: undefined
-  });
-}
