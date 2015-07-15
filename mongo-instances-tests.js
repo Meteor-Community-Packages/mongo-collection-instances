@@ -50,6 +50,12 @@ Tinytest.add('instanceof - Meteor.users matches (Mongo/Meteor).Collection', func
   test.instanceOf(Meteor.users, Meteor.Collection);
 });
 
+Tinytest.add('constructor equality - Mongo/Meteor.Collection === Mongo/Meteor.Collection.prototype.constructor', function (test) {
+  test.equal(Mongo.Collection, Mongo.Collection.prototype.constructor);
+  test.equal(Meteor.Collection, Mongo.Collection.prototype.constructor);
+  test.equal(Meteor.Collection, Meteor.Collection.prototype.constructor);
+});
+
 Tinytest.add('use New - keep behavior of Mongo.Collection', function (test) {
   var collectionName = 'foo' + test.id;
   function createWithoutNew() {
