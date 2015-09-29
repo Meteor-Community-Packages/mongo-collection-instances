@@ -1,8 +1,8 @@
 Package.describe({
   name: 'dburles:mongo-collection-instances',
-  summary: "Access your Mongo instances",
-  version: "0.3.4",
-  git: "https://github.com/dburles/mongo-collection-instances.git"
+  summary: 'Access your Mongo instances',
+  version: '0.3.4',
+  git: 'https://github.com/dburles/mongo-collection-instances.git'
 });
 
 Package.onUse(function(api) {
