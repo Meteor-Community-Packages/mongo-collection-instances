@@ -18,6 +18,7 @@ Package.onTest(function(api) {
   api.use([
     'tinytest',
     'accounts-base',
+    'mongo',
     'dburles:mongo-collection-instances']);
   api.addFiles('mongo-instances-tests.js');
 });
