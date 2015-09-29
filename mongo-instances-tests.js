@@ -20,7 +20,7 @@ Tinytest.add('basic - works Meteor.Collection', function (test) {
 });
 
 Tinytest.add('basic - collection already exists', function (test) {
-  var collectionName = 'foo' + test.id;
+  var collectionName = 'test' + test.id;
   function reInstantiate() {
     var Dump = new Mongo.Collection(collectionName);
   }
@@ -34,13 +34,13 @@ Tinytest.add('nonexistent - returns undefined', function (test) {
 });
 
 Tinytest.add('instanceof - matches Mongo.Collection', function (test) {
-  var collectionName = 'foo' + test.id;
+  var collectionName = 'test' + test.id;
   var Test = new Mongo.Collection(collectionName);
   test.instanceOf(Test, Mongo.Collection);
 });
 
 Tinytest.add('instanceof - Meteor.Collection matches Mongo.Collection', function (test) {
-  var collectionName = 'foo' + test.id;
+  var collectionName = 'test' + test.id;
   var Test = new Meteor.Collection(collectionName);
   test.instanceOf(Test, Mongo.Collection);
 });
@@ -57,7 +57,7 @@ Tinytest.add('constructor equality - Mongo/Meteor.Collection === Mongo/Meteor.Co
 });
 
 Tinytest.add('use New - keep behavior of Mongo.Collection', function (test) {
-  var collectionName = 'foo' + test.id;
+  var collectionName = 'test' + test.id;
   function createWithoutNew() {
     var Test = Mongo.Collection(collectionName);
   }
