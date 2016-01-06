@@ -1,6 +1,6 @@
 var instances = [];
 
-Meteor.addCollectionExtension(function (name, options) {
+CollectionExtensions.addExtension(function (name, options) {
   instances.push({
     name: name,
     instance: this,
