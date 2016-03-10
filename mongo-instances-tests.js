@@ -68,3 +68,8 @@ Tinytest.add('users - can Mongo.Collection.get Meteor.users instance', function 
   test.instanceOf(Mongo.Collection.get('users'), Mongo.Collection);
   test.instanceOf(Mongo.Collection.get('users'), Meteor.Collection);
 });
+
+Tinytest.add('ref - alternative name for collections', function (test) {
+  var collectionName = 'test' + test.id;
+  var refTest = new Mongo.Collection(null, { ref: collectionName });
+});

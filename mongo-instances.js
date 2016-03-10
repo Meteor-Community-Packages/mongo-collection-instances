@@ -2,6 +2,7 @@ var namedInstances = {};
 var nullInstances = [];
 
 CollectionExtensions.addExtension(function (name, options) {
+  if (options && typeof(options.ref) == 'string') var name = options.ref;
   if (name) {
     if (!(name in namedInstances)) namedInstances[name] = [];
     namedInstances[name].push({
@@ -38,7 +39,16 @@ Mongo.Collection.get = function(name, options) {
 };
 
 Mongo.Collection.getAll = function() {
-  return instances;
+  var results = [];
+  _.each(namedInstances, function(instances) {
+    _.each(instances, function(instance) {
+      results.push(instance);
+    });
+  });
+  _.each(nullInstances, function(instance) {
+    results.push(instance);
+  });
+  return results;
 };
 
 // Meteor.Collection will lack ownProperties that are added back to Mongo.Collection
