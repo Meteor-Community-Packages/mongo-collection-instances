@@ -12,9 +12,9 @@ Mongo.Collection.get = function(name, options) {
   options = options || {};
   var collection = _.find(instances, function(instance) {
     if (options.connection)
-      return instance.name === name &&
+      return (instance.name === name || instance.instance._name === name) &&
         instance.options && instance.options.connection._lastSessionId === options.connection._lastSessionId;
-    return instance.name === name;
+    return instance.name === name || instance.instance._name === name;
   });
 
   return collection && collection.instance;
