@@ -85,3 +85,13 @@ Tinytest.add('remove - returns false on a non-listed instance name', function (t
 	var expectNoCollection = Mongo.Collection.get(collectionName);
 	test.equal(expectNoCollection, undefined);
 });
+
+Tinytest.add('remove - does not remove a local collection if a non-existent connection is passed', function (test) {
+	var collectionName = 'test' + test.id;
+	var Test = new Mongo.Collection(collectionName);
+	var mockConnection = {_lastSessionId:"0123456789"};
+	var expectFalse = Mongo.Collection.remove(collectionName, {connection: mockConnection});
+	test.equal(expectFalse, false);
+	var expectCollection = Mongo.Collection.get(collectionName);
+	test.instanceOf(expectCollection, Mongo.Collection);
+});

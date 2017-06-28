@@ -29,11 +29,12 @@ Mongo.Collection.remove = function (name, options) {
   var connectionId = options && options.connection ? options.connection._lastSessionId : null;
   for (var i = 0; i < instances.length; i++) {
     var instance = instances[i];
-    if (connectionId && instance.options.connection._lastSessionId === connectionId && name === instance.name) {
+    if (connectionId && instance.options && instance.options.connection &&
+        instance.options.connection._lastSessionId === connectionId && name === instance.name) {
 	    index = i;
 	    break;
     }
-    else if (name === instance.name) {
+    else if (!connectionId && name === instance.name) {
       index = i;
       break;
     }
