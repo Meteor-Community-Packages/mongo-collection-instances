@@ -36,10 +36,15 @@ Returns an array of objects containing:
  - instance (The collection instance)
  - options (Any options that were passed in on instantiation)
 
-#### Mongo.Collection.remove('name')
+#### Mongo.Collection.remove('name', [options])
 
 Removes the collection from the instances list. Does **not** drop the collection.
 
+ - name (String)
+ - options (Object) [optional]
+   - options.connection (A connection object)
+
+Note, that if multiple connections are used and no connection is given as option, the first match of 'name' will be removed.
 
 ## Multiple connections
 
@@ -60,6 +65,8 @@ Mongo.Collection.get('foo') // returns instance of Foo1
 
 Mongo.Collection.get('foo', { connection: connection }); // returns instance of Foo2
 ```
+
+
 
 ### License
 

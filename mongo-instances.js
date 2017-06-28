@@ -24,10 +24,16 @@ Mongo.Collection.getAll = function() {
   return instances;
 };
 
-Mongo.Collection.remove = function (name) {
+Mongo.Collection.remove = function (name, options) {
   var index = -1;
+  var connectionId = options && options.connection ? options.connection._lastSessionId : null;
   for (var i = 0; i < instances.length; i++) {
-    if (name === instances[i].name) {
+    var instance = instances[i];
+    if (connectionId && instance.options.connection._lastSessionId === connectionId && name === instance.name) {
+	    index = i;
+	    break;
+    }
+    else if (name === instance.name) {
       index = i;
       break;
     }
