@@ -68,3 +68,20 @@ Tinytest.add('users - can Mongo.Collection.get Meteor.users instance', function 
   test.instanceOf(Mongo.Collection.get('users'), Mongo.Collection);
   test.instanceOf(Mongo.Collection.get('users'), Meteor.Collection);
 });
+
+Tinytest.add('remove - removes the entry from instances', function (test) {
+	var collectionName = 'test' + test.id;
+	var Test = new Mongo.Collection(collectionName);
+	var expectRemoved = Mongo.Collection.remove(collectionName);
+	test.equal(expectRemoved, true);
+	var expectNoCollection = Mongo.Collection.get(collectionName);
+	test.equal(expectNoCollection, undefined);
+});
+
+Tinytest.add('remove - returns false on a non-listed instance name', function (test) {
+	var collectionName = 'test' + test.id;
+	var expectFalse = Mongo.Collection.remove(collectionName);
+	test.equal(expectFalse, false);
+	var expectNoCollection = Mongo.Collection.get(collectionName);
+	test.equal(expectNoCollection, undefined);
+});

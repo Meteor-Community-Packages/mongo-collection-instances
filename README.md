@@ -36,6 +36,10 @@ Returns an array of objects containing:
  - instance (The collection instance)
  - options (Any options that were passed in on instantiation)
 
+#### Mongo.Collection.remove('name')
+
+Removes the collection from the instances list. Does **not** drop the collection.
+
 
 ## Multiple connections
 

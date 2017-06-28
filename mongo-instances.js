@@ -24,5 +24,21 @@ Mongo.Collection.getAll = function() {
   return instances;
 };
 
+Mongo.Collection.remove = function (name) {
+  var index = -1;
+  for (var i = 0; i < instances.length; i++) {
+    if (name === instances[i].name) {
+      index = i;
+      break;
+    }
+  }
+  if (index > -1) {
+    instances.splice(index, 1);
+    return true;
+  } else {
+    return false;
+  }
+};
+
 // Meteor.Collection will lack ownProperties that are added back to Mongo.Collection
 Meteor.Collection = Mongo.Collection;
