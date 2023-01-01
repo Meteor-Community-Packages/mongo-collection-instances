@@ -68,3 +68,15 @@ Tinytest.add('users - can Mongo.Collection.get Meteor.users instance', function 
   test.instanceOf(Mongo.Collection.get('users'), Mongo.Collection);
   test.instanceOf(Mongo.Collection.get('users'), Meteor.Collection);
 });
+
+Tinytest.add('local collections - can get local collections instance', function (test) {
+  var collection = new Mongo.Collection(null); //create a new local collection
+  
+  //inject the name
+  var collectionName = 'test' + test.id;
+  collection._name = collection._collection.name = collectionName;
+  
+  var collectionFromMongoCollectionGet = Mongo.Collection.get(collectionName);
+  
+  test.equal(collectionFromMongoCollectionGet, collection, 'local collections - can get local collections instance');
+});
