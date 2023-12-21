@@ -19,7 +19,7 @@
     "@babel/eslint-parser": "^7.23.3",
     "chai": "^4.3.10",
     "eslint-config-standard": "^16.0.3",
-    "puppeteer": "^10.4.0",
+    "puppeteer": "^21.6.1",
     "snazzy": "^9.0.0",
     "standardx": "^7.0.0"
   },
