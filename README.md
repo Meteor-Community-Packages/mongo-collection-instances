@@ -1,5 +1,12 @@
 # Meteor Mongo Collection Instances
 
+[![Meteor Community Package](https://img.shields.io/badge/Meteor-Package-green?logo=meteor&logoColor=white)](https://meteor.com)
+[![Test suite](https://github.com/Meteor-Community-Packages/mongo-collection-instances/actions/workflows/testsuite.yml/badge.svg)](https://github.com/Meteor-Community-Packages/mongo-collection-instances/actions/workflows/testsuite.yml)
+[![CodeQL](https://github.com/Meteor-Community-Packages/mongo-collection-instances/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Meteor-Community-Packages/mongo-collection-instances/actions/workflows/github-code-scanning/codeql)
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+
 
 This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to later lookup a Mongo Collection instance by the collection name.
 
