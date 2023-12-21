@@ -1,5 +1,5 @@
-Mongo Collection Instances
-===============
+# Meteor Mongo Collection Instances
+
 
 This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to later lookup a Mongo Collection instance by the collection name.
 
@@ -12,7 +12,7 @@ $ meteor add dburles:mongo-collection-instances
 ## Usage Example
 
 ```js
-Books = new Mongo.Collection('books');
+const Books = new Mongo.Collection('books');
 
 Mongo.Collection.get('books').insert({ name: 'test' });
 
@@ -27,7 +27,7 @@ Returns the collection instance.
 
  - name (String)
  - options (Object) [optional]
-   - options.connection (A connection object)
+   - options.connection (A connection object, see example below)
 
 #### Mongo.Collection.getAll()
 
@@ -46,11 +46,10 @@ For example:
 
 
 ```js
+const connection = DDP.connect('http://localhost:3005');
 
-connection = DDP.connect('http://localhost:3005');
-
-Foo1 = new Mongo.Collection('foo'); // local
-Foo2 = new Mongo.Collection('foo', { connection: connection });
+const Foo1 = new Mongo.Collection('foo'); // local
+const Foo2 = new Mongo.Collection('foo', { connection: connection });
 
 Mongo.Collection.get('foo') // returns instance of Foo1
 
@@ -59,4 +58,4 @@ Mongo.Collection.get('foo', { connection: connection }); // returns instance of 
 
 ### License
 
-MIT
+MIT, see [license file](./LICENSE.md)
