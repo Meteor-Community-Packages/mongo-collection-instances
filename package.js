@@ -1,24 +1,27 @@
+/* eslint-env meteor */
 Package.describe({
   name: 'dburles:mongo-collection-instances',
   summary: 'Access your Mongo instances',
-  version: '0.3.6',
+  version: '0.4.0',
   git: 'https://github.com/dburles/mongo-collection-instances.git'
-});
+})
 
-Package.onUse(function(api) {
-  api.versionsFrom('1.0');
+Package.onUse(function (api) {
+  api.versionsFrom(['1.0', '2.3', '2.8.0'])
   api.use([
     'mongo',
-    'underscore',
-    'lai:collection-extensions@0.3.0']);
-  api.addFiles('mongo-instances.js');
-});
+    'ecmascript',
+    'lai:collection-extensions@0.4.0'])
+  api.addFiles('mongo-instances.js')
+})
 
-Package.onTest(function(api) {
+Package.onTest(function (api) {
   api.use([
-    'tinytest',
+    'ecmascript',
+    'meteortesting:mocha@2.0.0',
     'accounts-base',
     'mongo',
-    'dburles:mongo-collection-instances']);
-  api.addFiles('mongo-instances-tests.js');
-});
+    'dburles:mongo-collection-instances'
+  ])
+  api.addFiles('mongo-instances.tests.js')
+})
