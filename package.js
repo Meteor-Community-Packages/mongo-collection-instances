@@ -2,16 +2,16 @@
 Package.describe({
   name: 'dburles:mongo-collection-instances',
   summary: 'Access your Mongo instances',
-  version: '0.4.0',
+  version: '1.0.0',
   git: 'https://github.com/dburles/mongo-collection-instances.git'
 })
 
 Package.onUse(function (api) {
-  api.versionsFrom(['1.0', '2.3', '2.8.0'])
+  api.versionsFrom(['2.3', '3.0-beta.0'])
   api.use([
     'mongo',
     'ecmascript',
-    'lai:collection-extensions@0.4.0'])
+    'lai:collection-extensions@1.0.0'])
   api.addFiles('mongo-instances.js')
 })
 
@@ -20,8 +20,8 @@ Package.onTest(function (api) {
     'ecmascript',
     'meteortesting:mocha@2.0.0',
     'accounts-base',
-    'mongo',
-    'dburles:mongo-collection-instances'
+    'mongo@2.0.0-beta300.0',
+    'dburles:mongo-collection-instances@1.0.0'
   ])
   api.addFiles('mongo-instances.tests.js')
 })
