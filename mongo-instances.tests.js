@@ -7,6 +7,10 @@ import { Meteor } from 'meteor/meteor'
 const randomName = () => `test${Random.id(6)}`
 const equal = (a, b) => expect(a).to.equal(b)
 
+const insert = (collection, doc) => Meteor.isClient
+  ? collection.insert(doc)
+  : collection.insertAsync(doc)
+
 describe('unit tests', () => {
   let collectionName
 
@@ -14,24 +18,24 @@ describe('unit tests', () => {
     collectionName = randomName() // random ID, so a new collection every time
   })
 
-  it('basic - works Mongo.Collection', () => {
+  it('basic - works Mongo.Collection', async () => {
     const Test = new Mongo.Collection(collectionName)
 
-    Test.insert({ test: true })
+    await insert(Test, { test: true })
     const find = Mongo.Collection.get(collectionName).find({ test: true })
-    equal(find.count(), 1)
+    equal(await find.countAsync(), 1)
 
     // get an existing collection again
     const ReGet = Mongo.Collection.get(collectionName)
-    equal(ReGet.find().count(), 1)
+    equal(await ReGet.find().countAsync(), 1)
   })
 
-  it('basic - works Meteor.Collection', function () {
+  it('basic - works Meteor.Collection', async () => {
     const Test = new Meteor.Collection(collectionName)
-    Test.insert({ test: true })
+    await insert(Test, { test: true })
 
     const find = Meteor.Collection.get(collectionName).find({ test: true })
-    equal(find.count(), 1)
+    equal(await find.countAsync(), 1)
   })
 
   it('basic - collection already exists', () => {
