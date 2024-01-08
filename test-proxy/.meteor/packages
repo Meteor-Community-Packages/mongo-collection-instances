@@ -17,3 +17,5 @@ es5-shim@4.8.1-beta300.0                # ECMAScript 5 compatibility for older b
 ecmascript@0.16.8-beta300.0              # Enable ECMAScript2015+ syntax in app code
 typescript@4.9.5-beta300.0              # Enable TypeScript syntax in .ts and .tsx modules
 shell-server@0.6.0-beta300.0            # Server-side component of the `meteor shell` command
+
+accounts-base@3.0.0-beta300.0
