@@ -1,4 +1,3 @@
-/* global CollectionExtensions */
 import { Mongo } from 'meteor/mongo'
 import { Meteor } from 'meteor/meteor'
 import { CollectionExtensions } from 'meteor/lai:collection-extensions'
