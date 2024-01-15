@@ -1,12 +1,12 @@
-/* global CollectionExtensions */
 import { Mongo } from 'meteor/mongo'
 import { Meteor } from 'meteor/meteor'
+import { CollectionExtensions } from 'meteor/lai:collection-extensions'
 const instances = []
 
-CollectionExtensions.addExtension(function (name, options) {
+CollectionExtensions.addExtension(function mongoCollectionInstances (collection, name, options) {
   instances.push({
     name: name,
-    instance: this,
+    instance: collection,
     options: options
   })
 })
