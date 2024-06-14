@@ -6,9 +6,13 @@
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-
-
 This package augments Mongo.Collection (and the deprecated Meteor.Collection) and allows you to later lookup a Mongo Collection instance by the collection name.
+
+## Version 1.0.0 breaking changes!
+
+> Beginning with version 1.0.0, this packages requires Meteor >= 3.0
+
+Apart from that, everything else remains the same.
 
 ## Installation
 
