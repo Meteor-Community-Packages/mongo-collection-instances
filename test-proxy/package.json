@@ -11,15 +11,14 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.7",
-    "meteor-node-stubs": "^1.2.7",
-    "simpl-schema": "^1.13.1"
+    "meteor-node-stubs": "^1.2.7"
   },
   "devDependencies": {
     "@babel/core": "^7.23.6",
     "@babel/eslint-parser": "^7.23.3",
     "chai": "^4.3.10",
     "eslint-config-standard": "^16.0.3",
-    "puppeteer": "^18.2.1",
+    "puppeteer": "^23.1.0",
     "snazzy": "^9.0.0",
     "standardx": "^7.0.0"
   },
