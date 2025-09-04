@@ -1,3 +1,7 @@
+# Warning
+
+This package may be no longer needed as Meteor offers a built-in API for this [Mongo.getCollection](https://docs.meteor.com/api/collections.html#Mongo-getCollection).
+
 # Meteor Mongo Collection Instances
 
 [![Meteor Community Package](https://img.shields.io/badge/Meteor-Package-green?logo=meteor&logoColor=white)](https://meteor.com)
