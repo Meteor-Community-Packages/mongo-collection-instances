@@ -2,7 +2,7 @@
 Package.describe({
   name: 'dburles:mongo-collection-instances',
   summary: 'Access your Mongo instances',
-  version: '1.0.0',
+  version: '1.0.1',
   git: 'https://github.com/dburles/mongo-collection-instances.git',
   deprecated: true
 })
@@ -24,7 +24,7 @@ Package.onTest(function (api) {
     'mongo',
     'typescript',
     'meteortesting:mocha@3.2.0',
-    'dburles:mongo-collection-instances@1.0.0'
+    'dburles:mongo-collection-instances@1.0.1'
   ])
   api.addFiles('mongo-instances.tests.js')
 })
